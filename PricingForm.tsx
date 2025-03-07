@@ -21,7 +21,9 @@ export default function PricingForm(props) {
                     <input type="radio" id="monthly" name="plan" checked />
                     <label htmlFor="monthly">
                         <span>Monthly plan</span>
-                        <span className="price">$299/mo</span>
+                        <span style={price} className="price">
+                            $299/mo
+                        </span>
                     </label>
                 </div>
 
@@ -34,9 +36,15 @@ export default function PricingForm(props) {
                     />
                     <label style={planLabel} htmlFor="three-months">
                         <span>3 months in full</span>
-                        <span className="old-price">$897</span>
-                        <span className="new-price">$785</span>
-                        <span className="price">$261/mo</span>
+                        <span style={oldPrice} className="old-price">
+                            $897
+                        </span>
+                        <span style={newPrice} className="new-price">
+                            $785
+                        </span>
+                        <span style={price} className="price">
+                            $261/mo
+                        </span>
                     </label>
                 </div>
 
@@ -47,25 +55,40 @@ export default function PricingForm(props) {
                         id="six-months"
                         name="plan"
                     />
-                    <label style={planLabel} htmlFor="six-months">
+                    <label
+                        style={{ ...planLabel, position: "relative" }}
+                        htmlFor="six-months"
+                    >
                         <span>6 months in full</span>
-                        <span className="old-price">$1794</span>
-                        <span className="new-price">$1489</span>
-                        <span className="price">$248/mo</span>
-                        <span className="best-tag">Best Value</span>
+                        <span style={oldPrice} className="old-price">
+                            $1794
+                        </span>
+                        <span style={newPrice} className="new-price">
+                            $1489
+                        </span>
+                        <span style={price} className="price">
+                            $248/mo
+                        </span>
+                        <span style={bestTag}>Best Value</span>
                     </label>
                 </div>
 
-                <div className="features">
-                    <h3>Your monthly subscription includes:</h3>
-                    <ul>
-                        <li>✅ Guaranteed GLP-1 weight loss medication</li>
-                        <li>✅ Support from board-certified clinicians</li>
-                        <li>✅ 16% body weight loss in 6 months</li>
+                <div style={{ marginTop: "15px" }} className="features">
+                    <h3 style={h3}>Your monthly subscription includes:</h3>
+                    <ul style={ul}>
+                        <li style={li}>
+                            ✅ Guaranteed GLP-1 weight loss medication
+                        </li>
+                        <li style={li}>
+                            ✅ Support from board-certified clinicians
+                        </li>
+                        <li style={li}>✅ 16% body weight loss in 6 months</li>
                     </ul>
                 </div>
 
-                <button id="subscribe-btn">$299 - GET STARTED</button>
+                <button style={button} id="subscribe-btn">
+                    $299 - GET STARTED
+                </button>
             </div>
         </div>
     )
@@ -88,6 +111,7 @@ const pricingContainer = {
     borderRadius: "10px",
     boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
     width: "350px",
+    text: "center",
 }
 
 const h2 = {
@@ -115,4 +139,58 @@ const planLabel = {
     justifyContent: "space-between",
     alignItems: "center",
     cursor: "pointer",
+}
+
+const bestTag = {
+    background: "#d9ea82",
+    color: "black",
+    fontSize: "12px",
+    padding: "3px 6px",
+    borderRadius: "15px",
+    Position: "absolute",
+    top: "-10px",
+    right: "10px",
+}
+
+const oldPrice = {
+    textDecoration: "line-through",
+    color: "gray",
+    marginRight: "5px",
+}
+
+const newPrice = {
+    fontWeight: "bold",
+    color: "green",
+}
+
+const price = {
+    fontWeight: "bold",
+}
+
+const h3 = {
+    backgroundColor: " #e3e8a0",
+    padding: "10px",
+    fontSize: "16px",
+}
+
+const ul = {
+    listStyle: "none",
+    padding: "0",
+    text: "left",
+}
+
+const li = {
+    margin: "5px 0",
+}
+
+const button = {
+    backgroundColor: "black",
+    color: "white",
+    padding: "15px",
+    border: "none",
+    width: "100%",
+    fontSize: "16px",
+    borderRadius: "5px",
+    cursor: "pointer",
+    marginTop: "15px",
 }
