@@ -8,9 +8,44 @@
  * @framerSupportedLayoutWidth auto
  * @framerSupportedLayoutHeight auto
  */
+
+import { useState } from "react"
+
 export default function PricingForm(props) {
-    // This is a React component containing an Example component
-    // Replace <Example /> with your own code
+    const [btnPrice, setBtnPrice] = useState("299")
+
+    const handleButton = (e) => {
+        const id = e.target.id
+        switch (id) {
+            case "monthly":
+                setBtnPrice("299")
+                break
+            case "three-months":
+                setBtnPrice("261")
+                break
+            case "six-months":
+                setBtnPrice("248")
+                break
+            default:
+                break
+        }
+    }
+
+    const handleSubmit = () => {
+        switch (btnPrice) {
+            case "299":
+                console.log("page1")
+                break
+            case "261":
+                console.log("page2")
+                break
+            case "248":
+                console.log("page3")
+                break
+            default:
+                break
+        }
+    }
 
     return (
         <div style={containerStyle}>
@@ -18,7 +53,12 @@ export default function PricingForm(props) {
                 <h2 style={h2}>Your Semaglutide plan</h2>
 
                 <div style={plan}>
-                    <input type="radio" id="monthly" name="plan" checked />
+                    <input
+                        type="radio"
+                        id="monthly"
+                        name="plan"
+                        onClick={handleButton}
+                    />
                     <label htmlFor="monthly">
                         <span>Monthly plan</span>
                         <span style={price} className="price">
@@ -33,6 +73,7 @@ export default function PricingForm(props) {
                         type="radio"
                         id="three-months"
                         name="plan"
+                        onClick={handleButton}
                     />
                     <label style={planLabel} htmlFor="three-months">
                         <span>3 months in full</span>
@@ -54,6 +95,7 @@ export default function PricingForm(props) {
                         type="radio"
                         id="six-months"
                         name="plan"
+                        onClick={handleButton}
                     />
                     <label
                         style={{ ...planLabel, position: "relative" }}
@@ -86,8 +128,12 @@ export default function PricingForm(props) {
                     </ul>
                 </div>
 
-                <button style={button} id="subscribe-btn">
-                    $299 - GET STARTED
+                <button
+                    style={button}
+                    id="subscribe-btn"
+                    onClick={handleSubmit}
+                >
+                    ${btnPrice} - GET STARTED
                 </button>
             </div>
         </div>
